@@ -1,5 +1,6 @@
 #:kivy 1.7.1
 <SayThis>:
+    button_font_size: '30sp'
     canvas:
         Rectangle:
             source: 'images/background.png'
@@ -31,13 +32,12 @@
         BoxLayout:
             id: button_box
             orientation: 'horizontal'
-            font_size: '30sp'
             size_hint: 1, None
             height: sayit_button.height
             Button:
                 id: sayit_button
                 text: 'Say it!'
-                font_size: button_box.font_size
+                font_size: root.button_font_size
                 size_hint: 1, None
                 width: self.texture_size[0]
                 height: self.texture_size[1] + (2 * main_layout.padding[1])
@@ -45,7 +45,7 @@
             Button:
                 id: clear_button
                 text: 'Clear'
-                font_size: button_box.font_size
+                font_size: root.button_font_size
                 size_hint: 1, None
                 width: self.texture_size[0]
                 height: self.texture_size[1] + (2 * main_layout.padding[1])

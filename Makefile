@@ -1,10 +1,11 @@
 # Project settings
 PY := python
-PROJECT_DIR := /home/kivy/pyohio-kivy-tutorial/saythis
+WD := /home/kivy/pyohio-kivy-tutorial
+PROJECT_DIR := $(WD)/saythis
 
 # Python for Android settings
-PYTHON_FOR_ANDROID := /home/kivy/python-for-android
-PYTHON_FOR_ANDROID_PACKAGE := $(PYTHON_FOR_ANDROID)/dist/default
+PY4A := /home/kivy/python-for-android
+PY4A_PACKAGE := $(PY4A)/dist/default
 PY4A_MODULES := "kivy"
 
 # Android settings
@@ -15,7 +16,7 @@ APK_VERSION := 0.1
 APK_ORIENTATION := sensor
 APK_ICON := $(PROJECT_DIR)/resources/icon.png
 APK_PRESPLASH := $(PROJECT_DIR)/resources/presplash.jpg
-APK_DEBUG := $(PYTHON_FOR_ANDROID_PACKAGE)/bin/$(APK_NAME)-$(APK_VERSION)-debug.apk
+APK_DEBUG := $(PY4A_PACKAGE)/bin/$(APK_NAME)-$(APK_VERSION)-debug.apk
 
 # Run
 .PHONY: run
@@ -36,15 +37,14 @@ monitor:
 # Initialize python-for-android
 .PHONY: create_python_for_android_distribution
 create_python_for_android_distribution:
-	rm -rf $(PYTHON_FOR_ANDROID)/dist
-	. $(VENV)/bin/activate; \
-	cd $(PYTHON_FOR_ANDROID); \
+	rm -rf $(PY4A)/dist
+	cd $(PY4A); \
 	./distribute.sh -m $(PY4A_MODULES)
 
 # Android commands
 .PHONY: package_android
 package_android:
-	cd $(PYTHON_FOR_ANDROID_PACKAGE); \
+	cd $(PY4A_PACKAGE); \
 	$(PY) ./build.py --package $(APK_PACKAGE) --name $(APP_NAME) --version $(APK_VERSION) --orientation $(APK_ORIENTATION) --icon $(APK_ICON) --presplash $(APK_PRESPLASH) --dir $(PROJECT_DIR) debug
 	mkdir -p $(WD)/binaries
 	cp $(APK_DEBUG) $(WD)/binaries/
