@@ -1,6 +1,6 @@
 # Project settings
 PY := python
-PROJECT_DIR := /home/kivy/pyohio-kivy-tutorial
+PROJECT_DIR := /home/kivy/pyohio-kivy-tutorial/saythis
 
 # Python for Android settings
 PYTHON_FOR_ANDROID := /home/kivy/python-for-android
