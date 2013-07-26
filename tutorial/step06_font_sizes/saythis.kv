@@ -1,0 +1,34 @@
+#:kivy 1.7.1
+<SayThis>:
+    orientation: 'vertical'
+    button_font_size: '30sp'
+    Label:
+        text: 'Say This!'
+        font_size: '45sp'
+        size_hint: 1, None
+        height: self.texture_size[1]
+    TextInput:
+        text: 'Hello, world!'
+        font_size: str(font_slider.value)+'sp'
+    Slider:
+        id: font_slider
+        orientation: 'horizontal'
+        min: 1
+        max: 100
+        value: 15
+        size_hint: 1, None
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, None
+        height: sayit_button.height
+        Button:
+            id: sayit_button
+            text: 'Say it!'
+            font_size: root.button_font_size
+            size_hint: 1, None
+            height: self.texture_size[1]
+        Button:
+            text: 'Clear'
+            font_size: root.button_font_size
+            size_hint: 1, None
+            height: self.texture_size[1]

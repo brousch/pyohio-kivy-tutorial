@@ -1,7 +1,7 @@
 # Project settings
 PY := python
 WD := /home/kivy/pyohio-kivy-tutorial
-PROJECT_DIR := $(WD)/saythis
+PROJECT_DIR := $(WD)/tutorial/step13_android
 
 # Python for Android settings
 PY4A := /home/kivy/python-for-android

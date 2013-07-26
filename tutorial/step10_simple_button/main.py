@@ -1,27 +1,20 @@
 import kivy
-kivy.require('1.7.0')
+kivy.require('1.7.1')
 
 from kivy.app import App
 from kivy.properties import ObjectProperty
-from kivy.uix.floatlayout import FloatLayout
-
-from components.initialize import InitializePlatform
-from components.ttsspeak import TtsSpeak
+from kivy.uix.boxlayout import BoxLayout
 
 
-class SayThis(FloatLayout):
+class SayThis(BoxLayout):
     saywhat_text = ObjectProperty(None)
-
-    def say_something(self, text):
-        TtsSpeak(text).speak()
-
+    
     def clear(self):
         self.saywhat_text.text = ""
         self.saywhat_text.focus = True
 
 class SayThisApp(App):
     def build(self):
-        InitializePlatform()
         return SayThis()
     
 
